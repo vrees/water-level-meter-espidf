@@ -2,5 +2,6 @@
 #define _DISPLAY_H
 
 
+void initDisplay();
 
 #endif
