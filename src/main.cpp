@@ -47,15 +47,19 @@ TheThingsNetwork ttn;
 #define LED_RED 25
 
 const unsigned TX_INTERVAL = 30;
-static uint8_t msgData[] = "Hello, world";
 
 void sendMessages(void *pvParameter)
 {
     while (1)
     {
         printf("Sending message...\n");
-        TTNResponseCode res = ttn.transmitMessage(msgData, sizeof(msgData) - 1);
+        readSensorValues();
+        // initDisplay();
+        printValues();
+
+        TTNResponseCode res = ttn.transmitMessage(lpp.getBuffer(), lpp.getSize());
         printf(res == kTTNSuccessfulTransmission ? "Message sent.\n" : "Transmission failed.\n");
+        Serial.println("Hello!");
 
         vTaskDelay(TX_INTERVAL * 1000 / portTICK_PERIOD_MS);
     }
@@ -65,7 +69,6 @@ void arduinoTask(void *pvParameter) {
     pinMode(LED_RED, OUTPUT);
     while(1) {
         digitalWrite(LED_RED, !digitalRead(LED_RED));
-        Serial.println("Hello!");
         delay(200);
     }
 }
@@ -75,6 +78,8 @@ extern "C" void app_main(void)
     initArduino();
     initDisplay();
     initVoltage();
+    readSensorValues();
+    printValues();
     
     xTaskCreate(&arduinoTask, "arduino_task", configMINIMAL_STACK_SIZE, NULL, 5, NULL);
 

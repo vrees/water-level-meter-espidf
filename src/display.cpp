@@ -9,6 +9,8 @@
 
 U8X8_SSD1306_128X64_NONAME_HW_I2C u8x8(MY_OLED_RST, MY_OLED_SCL, MY_OLED_SDA);
 
+char buff[16];
+
 void initDisplay()
 {
     u8x8.begin();
@@ -19,12 +21,10 @@ void initDisplay()
     u8x8.draw2x2String(0, 6, "Meter");
     delay(1000);
     u8x8.clear();
-    // vTaskDelete(NULL);
 }
 
 void printValues()
 {
-  char buff[16];
   u8x8.inverse();
   snprintf(buff, sizeof(buff), "U:%.2fV", voltage);
   u8x8.draw2x2String(0, 0, buff);

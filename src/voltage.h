@@ -8,5 +8,6 @@ extern float height;
 extern uint16_t adc_reading;
 
 void initVoltage();
+void readSensorValues();
 
 #endif

@@ -3,5 +3,6 @@
 
 
 void initDisplay();
+void printValues();
 
 #endif
