@@ -74,12 +74,12 @@ TheThingsNetwork ttn;
 #define LED_GREEN (gpio_num_t) 
 #define LED_RED 25
 
-const unsigned TX_INTERVAL = 30;
+const unsigned TX_INTERVAL = 5;
 
 void sendMessages(void *pvParameter)
 {
-    while (1)
-    {
+    // while (1)
+    // {
         printf("Sending message...\n");
         readSensorValues();
         // printValues();
@@ -88,7 +88,7 @@ void sendMessages(void *pvParameter)
         printf(res == kTTNSuccessfulTransmission ? "Message sent.\n" : "Transmission failed.\n");
 
         vTaskDelay(TX_INTERVAL * 1000 / portTICK_PERIOD_MS);
-    }
+    // }
 }
 
 void arduinoTask(void *pvParameter) {
@@ -145,7 +145,8 @@ extern "C" void app_main(void)
     if (ttn.join())
     {
         printf("Joined.\n");
-        xTaskCreate(sendMessages, "send_messages", 2048 * 4, (void *)0, 3, nullptr);
+        // xTaskCreate(sendMessages, "send_messages", 2048 * 4, (void *)0, 3, nullptr);
+        sendMessages(NULL);
     }
     else
     {
