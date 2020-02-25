@@ -54,12 +54,10 @@ void sendMessages(void *pvParameter)
     {
         printf("Sending message...\n");
         readSensorValues();
-        // initDisplay();
-        printValues();
+        // printValues();
 
         TTNResponseCode res = ttn.transmitMessage(lpp.getBuffer(), lpp.getSize());
         printf(res == kTTNSuccessfulTransmission ? "Message sent.\n" : "Transmission failed.\n");
-        Serial.println("Hello!");
 
         vTaskDelay(TX_INTERVAL * 1000 / portTICK_PERIOD_MS);
     }
