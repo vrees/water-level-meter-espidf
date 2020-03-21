@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name ESP32-Wroom)(type Legacy)(uri /home/vrees/work/git-repos/water-level-meter-espidf/kicad/Esp32LoraBoard/lib_sch/ESP32-wroom.lib)(options "")(descr ""))
+  (lib (name LevelShifter)(type Legacy)(uri /home/vrees/work/git-repos/water-level-meter-espidf/kicad/Esp32LoraBoard/lib_sch/Level_Shifter_4x.lib)(options "")(descr ""))
+)
