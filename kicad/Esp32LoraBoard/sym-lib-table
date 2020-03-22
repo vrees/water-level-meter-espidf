@@ -1,4 +1,7 @@
 (sym_lib_table
   (lib (name ESP32-Wroom)(type Legacy)(uri /home/vrees/work/git-repos/water-level-meter-espidf/kicad/Esp32LoraBoard/lib_sch/ESP32-wroom.lib)(options "")(descr ""))
   (lib (name LevelShifter)(type Legacy)(uri /home/vrees/work/git-repos/water-level-meter-espidf/kicad/Esp32LoraBoard/lib_sch/Level_Shifter_4x.lib)(options "")(descr ""))
+  (lib (name RFM95W-868S2)(type Legacy)(uri ${KIPRJMOD}/lib_sch/RFM95W-868S2.lib)(options "")(descr ""))
+  (lib (name BMP280)(type Legacy)(uri ${KIPRJMOD}/lib_sch/BMP280.lib)(options "")(descr ""))
+  (lib (name LM3940IMP-3.3)(type Legacy)(uri ${KIPRJMOD}/lib_sch/LM3940IMP-3.3.lib)(options "")(descr ""))
 )
