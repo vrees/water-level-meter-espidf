@@ -196,4 +196,6 @@
   (lib (name dk_TVS-Mixed-Technology)(type Legacy)(uri /home/vrees/work/tools/kicad/digikey-kicad-library/digikey-symbols/dk_TVS-Mixed-Technology.lib)(options "")(descr ""))
   (lib (name dk_USB-DVI-HDMI-Connectors)(type Legacy)(uri /home/vrees/work/tools/kicad/digikey-kicad-library/digikey-symbols/dk_USB-DVI-HDMI-Connectors.lib)(options "")(descr ""))
   (lib (name UMH3N)(type Legacy)(uri ${KIPRJMOD}/lib_sch/UMH3N.lib)(options "")(descr ""))
+  (lib (name SI2301DS-T1)(type Legacy)(uri ${KIPRJMOD}/lib_sch/SI2301DS-T1.lib)(options "")(descr ""))
+  (lib (name SI2302DS)(type Legacy)(uri ${KIPRJMOD}/lib_sch/SI2302DS.lib)(options "")(descr ""))
 )
