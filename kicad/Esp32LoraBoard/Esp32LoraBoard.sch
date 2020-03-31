@@ -5,7 +5,7 @@ EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
 Sheet 1 1
-Title "EspLoraBoard"
+Title "Esp32LoraBoard"
 Date "2020-03-22"
 Rev "1.0"
 Comp "Viktor Rees"
@@ -825,7 +825,7 @@ L Connector:Screw_Terminal_01x04 J6
 U 1 1 5EA379DD
 P 1600 4900
 F 0 "J6" H 1650 4450 50  0000 C CNN
-F 1 "ext_Measure" H 1650 4550 50  0000 C CNN
+F 1 "ext_Measure" H 1750 4550 50  0000 C CNN
 F 2 "Connector_Phoenix_MSTB:PhoenixContact_MSTBVA_2,5_4-G-5,08_1x04_P5.08mm_Vertical" H 1600 4900 50  0001 C CNN
 F 3 "~" H 1600 4900 50  0001 C CNN
 	1    1600 4900
@@ -1304,4 +1304,6 @@ Wire Notes Line
 	1050 3250 1050 1650
 Text Notes 1100 1800 0    50   ~ 0
 Optional Power Supply
+Text Label 1800 4600 1    50   ~ 0
+ext.Voltage
 $EndSCHEMATC

@@ -281,7 +281,7 @@ U 1 1 5E76B5A2
 P 4400 2550
 F 0 "BT1" H 4518 2646 50  0000 L CNN
 F 1 "LiFePo-Batterie" H 4450 2500 50  0000 L CNN
-F 2 "Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal" V 4400 2610 50  0001 C CNN
+F 2 "Connector_Phoenix_MSTB:PhoenixContact_MSTBVA_2,5_2-G-5,08_1x02_P5.08mm_Vertical" V 4400 2610 50  0001 C CNN
 F 3 "~" V 4400 2610 50  0001 C CNN
 	1    4400 2550
 	1    0    0    -1  
