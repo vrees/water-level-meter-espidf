@@ -5,7 +5,7 @@ EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
 Sheet 1 1
-Title "EspLoraBoard"
+Title "Esp32LoraBoard"
 Date "2020-03-22"
 Rev "1.0"
 Comp "Viktor Rees"
@@ -228,10 +228,7 @@ Wire Wire Line
 Wire Wire Line
 	6650 2200 6650 2250
 NoConn ~ 7700 2850
-NoConn ~ 7700 3750
 NoConn ~ 6500 3850
-NoConn ~ 6500 2850
-NoConn ~ 6500 2950
 NoConn ~ 6500 3950
 NoConn ~ 6500 4050
 NoConn ~ 6500 4150
@@ -825,7 +822,7 @@ L Connector:Screw_Terminal_01x04 J6
 U 1 1 5EA379DD
 P 1600 4900
 F 0 "J6" H 1650 4450 50  0000 C CNN
-F 1 "ext_Measure" H 1650 4550 50  0000 C CNN
+F 1 "ext_Measure" H 1750 4550 50  0000 C CNN
 F 2 "Connector_Phoenix_MSTB:PhoenixContact_MSTBVA_2,5_4-G-5,08_1x04_P5.08mm_Vertical" H 1600 4900 50  0001 C CNN
 F 3 "~" H 1600 4900 50  0001 C CNN
 	1    1600 4900
@@ -1304,4 +1301,157 @@ Wire Notes Line
 	1050 3250 1050 1650
 Text Notes 1100 1800 0    50   ~ 0
 Optional Power Supply
+Text Label 1800 4600 1    50   ~ 0
+ext.Voltage
+$Comp
+L Device:Rotary_Encoder_Switch SW1
+U 1 1 5E862008
+P 7000 7700
+F 0 "SW1" H 7000 7400 50  0000 C CNN
+F 1 "Rotary_Encoder" H 7000 8000 50  0000 C CNN
+F 2 "Rotary_Encoder:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm" H 6850 7860 50  0001 C CNN
+F 3 "~" H 7000 7960 50  0001 C CNN
+	1    7000 7700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R14
+U 1 1 5E865359
+P 6050 7300
+F 0 "R14" H 6120 7346 50  0000 L CNN
+F 1 "10k" H 6120 7255 50  0000 L CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 5980 7300 50  0001 C CNN
+F 3 "~" H 6050 7300 50  0001 C CNN
+	1    6050 7300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R15
+U 1 1 5E86599D
+P 6300 7300
+F 0 "R15" H 6370 7346 50  0000 L CNN
+F 1 "10k" H 6370 7255 50  0000 L CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 6230 7300 50  0001 C CNN
+F 3 "~" H 6300 7300 50  0001 C CNN
+	1    6300 7300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C9
+U 1 1 5E865D88
+P 6050 8000
+F 0 "C9" H 5800 8050 50  0000 L CNN
+F 1 "1u" H 5800 7950 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 6088 7850 50  0001 C CNN
+F 3 "~" H 6050 8000 50  0001 C CNN
+	1    6050 8000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C10
+U 1 1 5E86621D
+P 6300 8000
+F 0 "C10" H 6415 8046 50  0000 L CNN
+F 1 "1u" H 6415 7955 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 6338 7850 50  0001 C CNN
+F 3 "~" H 6300 8000 50  0001 C CNN
+	1    6300 8000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6050 7100 6300 7100
+Wire Wire Line
+	6300 7100 6300 7150
+Connection ~ 6050 7100
+Wire Wire Line
+	6050 7100 6050 7150
+Wire Wire Line
+	6050 7450 6050 7600
+Wire Wire Line
+	6300 7450 6300 7800
+Wire Wire Line
+	6050 8150 6050 8250
+Wire Wire Line
+	6050 8250 6300 8250
+Wire Wire Line
+	7400 8250 7400 7800
+Wire Wire Line
+	7400 7800 7300 7800
+Wire Wire Line
+	6300 8150 6300 8250
+Connection ~ 6300 8250
+Connection ~ 6300 7800
+Wire Wire Line
+	6300 7800 6300 7850
+Wire Wire Line
+	6700 7600 6550 7600
+Connection ~ 6050 7600
+Wire Wire Line
+	6050 7600 6050 7850
+Wire Wire Line
+	6050 6900 6050 7100
+Text Label 6050 6900 1    50   ~ 0
+VCC_2
+Wire Wire Line
+	6550 7600 6550 6900
+Wire Wire Line
+	6300 8250 6550 8250
+Wire Wire Line
+	6300 7800 6650 7800
+Wire Wire Line
+	6050 7600 6550 7600
+Connection ~ 6550 7600
+Wire Wire Line
+	6650 7800 6650 6900
+Connection ~ 6650 7800
+Wire Wire Line
+	6650 7800 6700 7800
+Wire Wire Line
+	6700 7700 6550 7700
+Wire Wire Line
+	6550 7700 6550 8250
+Connection ~ 6550 8250
+Wire Wire Line
+	6550 8250 7400 8250
+Wire Wire Line
+	7300 7600 7300 6900
+Text Label 6550 6900 1    50   ~ 0
+ROT_A
+Text Label 6650 6900 1    50   ~ 0
+ROT_B
+Text Label 7300 6900 1    50   ~ 0
+ROT_SW
+Wire Notes Line
+	7750 6400 7750 8500
+Wire Notes Line
+	7750 8500 5650 8500
+Wire Notes Line
+	5650 8500 5650 6400
+Wire Notes Line
+	5650 6400 7750 6400
+Wire Wire Line
+	7700 3750 8000 3750
+Wire Wire Line
+	6500 2950 6200 2950
+Wire Wire Line
+	6500 2850 6200 2850
+Text Label 6200 2850 0    50   ~ 0
+ROT_A
+Text Label 6200 2950 0    50   ~ 0
+ROT_B
+Text Label 8000 3750 2    50   ~ 0
+ROT_SW
+$Comp
+L power:GND #PWR?
+U 1 1 5E9DC8F4
+P 6550 8300
+F 0 "#PWR?" H 6550 8050 50  0001 C CNN
+F 1 "GND" H 6400 8300 50  0000 C CNN
+F 2 "" H 6550 8300 50  0001 C CNN
+F 3 "" H 6550 8300 50  0001 C CNN
+	1    6550 8300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6550 8300 6550 8250
 $EndSCHEMATC
