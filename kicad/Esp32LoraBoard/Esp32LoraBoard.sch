@@ -6,10 +6,10 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 1 1
 Title "Esp32LoraBoard"
-Date "2020-03-22"
-Rev "1.0"
+Date "2020-04-11"
+Rev "1.1"
 Comp "Viktor Rees"
-Comment1 ""
+Comment1 "Reset-Button added"
 Comment2 ""
 Comment3 ""
 Comment4 ""
@@ -413,12 +413,12 @@ Wire Wire Line
 $Comp
 L Device:C_Small C5
 U 1 1 5E7C919D
-P 5950 2800
-F 0 "C5" H 5800 2900 50  0000 L CNN
-F 1 "1n" H 5800 2700 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 5950 2800 50  0001 C CNN
-F 3 "~" H 5950 2800 50  0001 C CNN
-	1    5950 2800
+P 5950 2850
+F 0 "C5" H 5800 2950 50  0000 L CNN
+F 1 "1n" H 5800 2750 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 5950 2850 50  0001 C CNN
+F 3 "~" H 5950 2850 50  0001 C CNN
+	1    5950 2850
 	1    0    0    -1  
 $EndComp
 Text Label 4300 1500 1    50   ~ 0
@@ -426,17 +426,14 @@ VCC
 $Comp
 L power:GND #PWR0102
 U 1 1 5E7E119F
-P 5950 2900
-F 0 "#PWR0102" H 5950 2650 50  0001 C CNN
-F 1 "GND" H 5955 2727 50  0000 C CNN
-F 2 "" H 5950 2900 50  0001 C CNN
-F 3 "" H 5950 2900 50  0001 C CNN
-	1    5950 2900
+P 5950 3100
+F 0 "#PWR0102" H 5950 2850 50  0001 C CNN
+F 1 "GND" H 5955 2927 50  0000 C CNN
+F 2 "" H 5950 3100 50  0001 C CNN
+F 3 "" H 5950 3100 50  0001 C CNN
+	1    5950 3100
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5950 2700 5950 2650
-Connection ~ 5950 2650
 Text Label 14100 1200 0    50   ~ 0
 Reset
 Text Label 14100 1300 0    50   ~ 0
@@ -1454,4 +1451,30 @@ F 3 "" H 6550 8300 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6550 8300 6550 8250
+$Comp
+L Switch:SW_Push_Dual_x2 SW2
+U 1 1 5E94C2C5
+P 5600 2850
+F 0 "SW2" V 5900 2800 50  0000 L CNN
+F 1 "Reset" V 5300 2750 50  0000 L CNN
+F 2 "Button_Switch_SMD:SW_SPST_CK_RS282G05A3" H 5600 3050 50  0001 C CNN
+F 3 "~" H 5600 3050 50  0001 C CNN
+	1    5600 2850
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5950 2900 5950 2950
+Wire Wire Line
+	5600 3050 5950 3050
+Connection ~ 5950 2950
+Wire Wire Line
+	5950 2950 5950 3050
+Wire Wire Line
+	5600 2650 5950 2650
+Connection ~ 5950 2650
+Wire Wire Line
+	5950 2650 5950 2750
+Wire Wire Line
+	5950 3100 5950 3050
+Connection ~ 5950 3050
 $EndSCHEMATC
