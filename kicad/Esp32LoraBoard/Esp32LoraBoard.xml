@@ -2,7 +2,7 @@
 <export version="D">
   <design>
     <source>/home/vrees/work/git-repos/water-level-meter-espidf/kicad/Esp32LoraBoard/Esp32LoraBoard.sch</source>
-    <date>Sa 11 Apr 2020 09:01:42 CEST</date>
+    <date>Sa 18 Apr 2020 08:45:09 CEST</date>
     <tool>Eeschema 5.1.4-e60b266~84~ubuntu18.04.1</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
