@@ -415,7 +415,7 @@ L Device:C_Small C5
 U 1 1 5E7C919D
 P 5950 2850
 F 0 "C5" H 5800 2950 50  0000 L CNN
-F 1 "100n" H 5700 2750 50  0000 L CNN
+F 1 "220n" H 5700 2750 50  0000 L CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 5950 2850 50  0001 C CNN
 F 3 "~" H 5950 2850 50  0001 C CNN
 	1    5950 2850
@@ -435,7 +435,7 @@ F 3 "" H 5950 3100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 14100 1200 0    50   ~ 0
-Reset
+Boot
 Text Label 14100 1300 0    50   ~ 0
 DTR
 Text Label 14100 1400 0    50   ~ 0
@@ -445,7 +445,7 @@ DTR
 Text Label 13200 1300 2    50   ~ 0
 RTS
 Text Label 13200 1400 2    50   ~ 0
-Boot
+Reset
 $Comp
 L Device:R R2
 U 1 1 5E7F7F43
@@ -718,8 +718,6 @@ Wire Wire Line
 	2650 5650 2500 5650
 Connection ~ 2650 5650
 Wire Wire Line
-	2200 4900 2950 4900
-Wire Wire Line
 	1800 4350 2100 4350
 Wire Wire Line
 	3800 6000 3800 6200
@@ -763,8 +761,8 @@ $Comp
 L Connector:TestPoint TP1
 U 1 1 5E8ABFC1
 P 3500 5650
-F 0 "TP1" H 3500 5950 50  0000 C CNN
-F 1 "TP_U_BATT" H 3500 5850 50  0000 C CNN
+F 0 "TP1" H 3500 5900 50  0000 C CNN
+F 1 "U_BATT_MEASURE" H 3400 5550 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 3700 5650 50  0001 C CNN
 F 3 "~" H 3700 5650 50  0001 C CNN
 	1    3500 5650
@@ -808,7 +806,7 @@ $EndComp
 Wire Wire Line
 	3800 4200 3800 4350
 Wire Wire Line
-	2650 6200 3800 6200
+	2650 6200 3500 6200
 Wire Wire Line
 	2300 4350 3800 4350
 Connection ~ 3800 4350
@@ -1148,7 +1146,7 @@ L Connector:TestPoint TP2
 U 1 1 5EA4B783
 P 3100 5650
 F 0 "TP2" H 3100 5950 50  0000 C CNN
-F 1 "TP_U_EXT" H 3050 5850 50  0000 C CNN
+F 1 "U_EXT_ENABLE" H 2900 5850 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 3300 5650 50  0001 C CNN
 F 3 "~" H 3300 5650 50  0001 C CNN
 	1    3100 5650
@@ -1477,4 +1475,48 @@ F 3 "" H 13300 5700 50  0001 C CNN
 	1    13300 5700
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector:TestPoint TP4
+U 1 1 5EA46AF4
+P 3100 4850
+F 0 "TP4" H 3100 5150 50  0000 C CNN
+F 1 "U_EXT_MEASURE" H 2950 5050 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 3300 4850 50  0001 C CNN
+F 3 "~" H 3300 4850 50  0001 C CNN
+	1    3100 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP5
+U 1 1 5EA53C46
+P 4150 5050
+F 0 "TP5" H 4000 5200 50  0000 C CNN
+F 1 "U_BAT_ENABLE" H 4000 5300 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 4350 5050 50  0001 C CNN
+F 3 "~" H 4350 5050 50  0001 C CNN
+	1    4150 5050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3100 4900 3100 4850
+Wire Wire Line
+	2200 4900 3100 4900
+Wire Wire Line
+	4150 4950 4150 5050
+$Comp
+L Connector:TestPoint TP6
+U 1 1 5EA89641
+P 3500 6350
+F 0 "TP6" H 3650 6450 50  0000 C CNN
+F 1 "GND" H 3350 6450 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 3700 6350 50  0001 C CNN
+F 3 "~" H 3700 6350 50  0001 C CNN
+	1    3500 6350
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3500 6350 3500 6200
+Connection ~ 3500 6200
+Wire Wire Line
+	3500 6200 3800 6200
 $EndSCHEMATC
