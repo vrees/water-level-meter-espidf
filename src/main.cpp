@@ -38,10 +38,8 @@
 #include "display.h"
 #include "voltage.h"
 
-
-
 extern const uint8_t ulp_main_bin_start[] asm("_binary_ulp_main_bin_start");
-extern const uint8_t ulp_main_bin_end[]   asm("_binary_ulp_main_bin_end");
+extern const uint8_t ulp_main_bin_end[] asm("_binary_ulp_main_bin_end");
 
 /* This function is called once after power-on reset, to load ULP program into
  * RTC memory and configure the ADC.
@@ -69,31 +67,35 @@ const char *appKey = "1D48B6FABE11BCC164028B0F0E9F4990";
 #define TTN_PIN_DIO1 33
 
 TheThingsNetwork ttn;
+esp_err_t err;
 
-
-#define LED_GREEN (gpio_num_t) 
+#define LED_GREEN (gpio_num_t)
 #define LED_RED 25
 
 const unsigned TX_INTERVAL = 5;
+
+extern "C" void initLora();
 
 void sendMessages(void *pvParameter)
 {
     // while (1)
     // {
-        printf("Sending message...\n");
-        readSensorValues();
-        // printValues();
+    printf("Sending message...\n");
+    readSensorValues();
+    // printValues();
 
-        TTNResponseCode res = ttn.transmitMessage(lpp.getBuffer(), lpp.getSize());
-        printf(res == kTTNSuccessfulTransmission ? "Message sent.\n" : "Transmission failed.\n");
+    TTNResponseCode res = ttn.transmitMessage(lpp.getBuffer(), lpp.getSize());
+    printf(res == kTTNSuccessfulTransmission ? "Message sent.\n" : "Transmission failed.\n");
 
-        vTaskDelay(TX_INTERVAL * 1000 / portTICK_PERIOD_MS);
+    vTaskDelay(TX_INTERVAL * 1000 / portTICK_PERIOD_MS);
     // }
 }
 
-void arduinoTask(void *pvParameter) {
+void arduinoTask(void *pvParameter)
+{
     pinMode(LED_RED, OUTPUT);
-    while(1) {
+    while (1)
+    {
         digitalWrite(LED_RED, !digitalRead(LED_RED));
         delay(200);
     }
@@ -106,34 +108,13 @@ extern "C" void app_main(void)
     initVoltage();
     readSensorValues();
     printValues();
-    
-    xTaskCreate(&arduinoTask, "arduino_task", configMINIMAL_STACK_SIZE, NULL, 5, NULL);
 
+    xTaskCreate(&arduinoTask, "arduino_task", configMINIMAL_STACK_SIZE, NULL, 5, NULL);
 
     Serial.begin(115200);
     Serial.println("Start!");
 
-    esp_err_t err;
-
-    // Initialize the GPIO ISR handler service
-    err = gpio_install_isr_service(ESP_INTR_FLAG_IRAM);
-    ESP_ERROR_CHECK(err);
-
-    // Initialize the NVS (non-volatile storage) for saving and restoring the keys
-    err = nvs_flash_init();
-    ESP_ERROR_CHECK(err);
-
-    // Initialize SPI bus
-    spi_bus_config_t spi_bus_config;
-    spi_bus_config.miso_io_num = TTN_PIN_SPI_MISO;
-    spi_bus_config.mosi_io_num = TTN_PIN_SPI_MOSI;
-    spi_bus_config.sclk_io_num = TTN_PIN_SPI_SCLK;
-    spi_bus_config.quadwp_io_num = -1;
-    spi_bus_config.quadhd_io_num = -1;
-    spi_bus_config.max_transfer_sz = 0;
-    // spi_bus_config.intr_flags = spi_bus_config.intr_flags | !(ESP_INTR_FLAG_HIGH|ESP_INTR_FLAG_EDGE|ESP_INTR_FLAG_INTRDISABLED);
-    err = spi_bus_initialize(TTN_SPI_HOST, &spi_bus_config, TTN_SPI_DMA_CHAN);
-    ESP_ERROR_CHECK(err);
+    initLora();
 
     // Configure the SX127x pins
     ttn.configurePins(TTN_SPI_HOST, TTN_PIN_NSS, TTN_PIN_RXTX, TTN_PIN_RST, TTN_PIN_DIO0, TTN_PIN_DIO1);
@@ -156,12 +137,34 @@ extern "C" void app_main(void)
     printf("left app_main() program\n");
 }
 
+extern "C" void initLora()
+{
 
+    // Initialize the GPIO ISR handler service
+    err = gpio_install_isr_service(ESP_INTR_FLAG_IRAM);
+    ESP_ERROR_CHECK(err);
+
+    // Initialize the NVS (non-volatile storage) for saving and restoring the keys
+    err = nvs_flash_init();
+    ESP_ERROR_CHECK(err);
+
+    // Initialize SPI bus
+    spi_bus_config_t spi_bus_config;
+    spi_bus_config.miso_io_num = TTN_PIN_SPI_MISO;
+    spi_bus_config.mosi_io_num = TTN_PIN_SPI_MOSI;
+    spi_bus_config.sclk_io_num = TTN_PIN_SPI_SCLK;
+    spi_bus_config.quadwp_io_num = -1;
+    spi_bus_config.quadhd_io_num = -1;
+    spi_bus_config.max_transfer_sz = 0;
+    spi_bus_config.intr_flags = spi_bus_config.intr_flags | !(ESP_INTR_FLAG_HIGH | ESP_INTR_FLAG_EDGE | ESP_INTR_FLAG_INTRDISABLED);
+    err = spi_bus_initialize(TTN_SPI_HOST, &spi_bus_config, TTN_SPI_DMA_CHAN);
+    ESP_ERROR_CHECK(err);
+}
 
 static void init_ulp_program()
 {
     esp_err_t err = ulp_load_binary(0, ulp_main_bin_start,
-            (ulp_main_bin_end - ulp_main_bin_start) / sizeof(uint32_t));
+                                    (ulp_main_bin_end - ulp_main_bin_start) / sizeof(uint32_t));
     ESP_ERROR_CHECK(err);
 
     /* Configure ADC channel */
